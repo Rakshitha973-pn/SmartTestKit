@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SmartTestKit Report</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0F172A;color:#E2E8F0;min-height:100vh}
+  .topbar{background:#1E293B;border-bottom:1px solid #334155;padding:16px 32px;display:flex;align-items:center;gap:12px}
+  .logo{font-size:20px;font-weight:700;color:#38BDF8}
+  .subtitle{font-size:13px;color:#94A3B8}
+  .container{max-width:1100px;margin:0 auto;padding:32px 20px}
+  .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:32px}
+  .summary-card{background:#1E293B;border-radius:12px;padding:20px;border:1px solid #334155;text-align:center}
+  .summary-card .num{font-size:36px;font-weight:700;line-height:1}
+  .summary-card .label{font-size:13px;color:#94A3B8;margin-top:4px}
+  .num-pass{color:#10B981} .num-fail{color:#EF4444} .num-total{color:#38BDF8} .num-dur{color:#F59E0B}
+  .progress-section{background:#1E293B;border-radius:12px;padding:20px 24px;margin-bottom:24px;border:1px solid #334155}
+  .progress-label{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px}
+  .progress-bar{background:#0F172A;border-radius:999px;height:16px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#10B981,#38BDF8)}
+  .cat-section{background:#1E293B;border-radius:12px;margin-bottom:16px;overflow:hidden;border:1px solid #334155}
+  .cat-header{display:flex;align-items:center;gap:12px;padding:14px 20px;background:#243044;flex-wrap:wrap}
+  .cat-icon{font-size:18px} .cat-name{font-weight:600;font-size:13px;letter-spacing:0.05em}
+  .cat-count{font-size:12px;color:#64748B;margin-left:auto}
+  .cat-pass{font-size:13px;font-weight:500} .cat-fail{font-size:13px;font-weight:500;color:#EF4444}
+  .test-list{padding:4px 0}
+  .test-row{display:flex;align-items:center;gap:10px;padding:8px 20px;border-bottom:1px solid #1A2539;font-size:13px}
+  .test-row:last-child{border-bottom:none}
+  .test-row.pass .test-icon{color:#10B981;font-weight:700}
+  .test-row.fail .test-icon{color:#EF4444;font-weight:700}
+  .test-name{flex:1;color:#CBD5E1;font-family:'SF Mono',monospace;font-size:12px}
+  .test-dur{font-size:11px;color:#475569}
+  .error-detail{background:#1a0a0a;border-left:3px solid #EF4444;margin:0 20px 8px;border-radius:0 4px 4px 0;padding:10px}
+  .error-detail pre{font-size:11px;color:#FCA5A5;white-space:pre-wrap}
+  .footer{text-align:center;color:#475569;font-size:12px;margin-top:40px;padding:20px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div>
+    <div class="logo">SmartTestKit</div>
+    <div class="subtitle">Report generated 18 May 2026 at 15:48:27</div>
+  </div>
+</div>
+<div class="container">
+  <div class="summary-grid">
+    <div class="summary-card"><div class="num num-total">100</div><div class="label">Total Tests</div></div>
+    <div class="summary-card"><div class="num num-pass">99</div><div class="label">Passed</div></div>
+    <div class="summary-card"><div class="num num-fail">0</div><div class="label">Failed</div></div>
+    <div class="summary-card"><div class="num num-dur">86.8s</div><div class="label">Duration</div></div>
+  </div>
+  <div class="progress-section">
+    <div class="progress-label">
+      <span>Coverage Gate (pass rate)</span>
+      <span style="color:#10B981">99.0% &#10003;</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:99.0%"></div></div>
+  </div>
+  
+        <div class="cat-section" style="border-left:4px solid #3B82F6">
+          <div class="cat-header">
+            <span class="cat-icon">&#x1F9E9;</span>
+            <span class="cat-name">UNIT TESTS</span>
+            <span class="cat-count">28 tests</span>
+            <span class="cat-pass" style="color:#3B82F6">&#10003; 28 passed</span>
+            
+          </div><div class="test-list">
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_emails_rejected[plainaddress]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_emails_rejected[double-dot..com]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_emails_rejected[missingdomain]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_emails_rejected[]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_emails_rejected[   ]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_emails_rejected[no-at-sign]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_valid_email_accepted</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_email_stored_lowercase</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_weak_passwords_rejected[abc-3 chars]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_weak_passwords_rejected[1234567-7 chars]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_weak_passwords_rejected[-empty]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_exactly_8_chars_accepted</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_long_password_accepted</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_empty_title_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_whitespace_title_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_title_200_chars_accepted</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_title_201_chars_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_priority_rejected[urgent]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_priority_rejected[HIGH]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_priority_rejected[0]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_priority_rejected[critical]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_priority_rejected[]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_valid_priorities_accepted[low]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_valid_priorities_accepted[medium]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_valid_priorities_accepted[high]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_returns_200</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_returns_ok_status</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_returns_version</span>
+              <span class="test-dur">0ms</span>
+            </div></div></div>
+        <div class="cat-section" style="border-left:4px solid #10B981">
+          <div class="cat-header">
+            <span class="cat-icon">&#x1F517;</span>
+            <span class="cat-name">INTEGRATION TESTS</span>
+            <span class="cat-count">15 tests</span>
+            <span class="cat-pass" style="color:#10B981">&#10003; 15 passed</span>
+            
+          </div><div class="test-list">
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_register_new_user</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_duplicate_email_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_register_missing_body</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_login_correct_credentials</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_login_wrong_password</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_login_nonexistent_user</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_token_is_string</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_create_task</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_get_tasks_empty</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_get_tasks_returns_created_task</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_update_task_done</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_delete_task</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_delete_nonexistent_task</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_filter_tasks_by_priority</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_create_multiple_tasks</span>
+              <span class="test-dur">0ms</span>
+            </div></div></div>
+        <div class="cat-section" style="border-left:4px solid #EF4444">
+          <div class="cat-header">
+            <span class="cat-icon">&#x1F6E1;</span>
+            <span class="cat-name">SECURITY TESTS</span>
+            <span class="cat-count">17 tests</span>
+            <span class="cat-pass" style="color:#EF4444">&#10003; 17 passed</span>
+            
+          </div><div class="test-list">
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_tasks_requires_auth</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_create_task_requires_auth</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_delete_task_requires_auth</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_fake_token_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_empty_token_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_user_cannot_delete_other_users_task</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_user_cannot_update_other_users_task</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_user_only_sees_own_tasks</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_sql_injection_in_email_rejected['; DROP TABLE users; --]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_sql_injection_in_email_rejected[' OR '1'='1]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_sql_injection_in_email_rejected[admin'--]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_sql_injection_in_email_rejected[1; SELECT * FROM users]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_sql_injection_in_email_rejected[' UNION SELECT * FROM users --]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_sql_injection_in_task_title['; DROP TABLE tasks; --]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_sql_injection_in_task_title[' OR 1=1 --]</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_cannot_set_admin_role_on_register</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_no_stack_trace_on_bad_request</span>
+              <span class="test-dur">0ms</span>
+            </div></div></div>
+        <div class="cat-section" style="border-left:4px solid #F59E0B">
+          <div class="cat-header">
+            <span class="cat-icon">&#x26A1;</span>
+            <span class="cat-name">PERFORMANCE TESTS</span>
+            <span class="cat-count">7 tests</span>
+            <span class="cat-pass" style="color:#F59E0B">&#10003; 7 passed</span>
+            
+          </div><div class="test-list">
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_health_under_50ms</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_register_under_500ms</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_login_under_500ms</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_get_tasks_under_200ms</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_create_task_under_300ms</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_100_health_checks_stay_fast</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_50_task_creates_stay_fast</span>
+              <span class="test-dur">0ms</span>
+            </div></div></div>
+        <div class="cat-section" style="border-left:4px solid #8B5CF6">
+          <div class="cat-header">
+            <span class="cat-icon">&#x1F501;</span>
+            <span class="cat-name">REGRESSION TESTS</span>
+            <span class="cat-count">12 tests</span>
+            <span class="cat-pass" style="color:#8B5CF6">&#10003; 12 passed</span>
+            
+          </div><div class="test-list">
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_task_response_shape</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_login_response_shape</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_health_response_shape</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_get_tasks_list_item_shape</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_task_id_is_integer</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_task_done_is_boolean</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_BUG001_delete_returns_404_not_500</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_BUG002_duplicate_email_returns_409_not_500</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_BUG003_whitespace_title_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_BUG004_other_user_task_returns_404_not_403</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_BUG005_login_case_insensitive_email</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_BUG006_empty_json_body_no_crash</span>
+              <span class="test-dur">0ms</span>
+            </div></div></div>
+        <div class="cat-section" style="border-left:4px solid #6B7280">
+          <div class="cat-header">
+            <span class="cat-icon">&#x1F4CB;</span>
+            <span class="cat-name">OTHER TESTS</span>
+            <span class="cat-count">21 tests</span>
+            <span class="cat-pass" style="color:#6B7280">&#10003; 20 passed</span>
+            <span class='cat-fail'>&#10007; 1 failed</span>
+          </div><div class="test-list">
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_api_is_reachable</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_health_endpoint_exists</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_health_returns_json</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_health_has_status_field</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_response_time_under_2s</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_protected_endpoint_requires_token</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_invalid_token_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_register_endpoint_exists</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_register_returns_json</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_login_wrong_password_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_register_invalid_email_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_register_short_password_rejected</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_sql_injection_does_not_crash</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_empty_body_does_not_crash</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_no_stack_trace_in_error_response</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row fail">
+              <span class="test-icon">&#10007;</span>
+              <span class="test-name">test_cors_headers_present</span>
+              <span class="test-dur">0ms</span>
+            </div><div class="error-detail"><pre>tests\external\test_external_api.py:156: in test_cors_headers_present
+    pytest.xfail("No CORS headers found — acceptable if API is not browser-facing")
+E   _pytest.outcomes.XFailed: No CORS headers found — acceptable if API is not browser-facing</pre></div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_content_type_is_json</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_no_html_in_api_response</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_404_returns_json_not_html</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_health_under_3000ms</span>
+              <span class="test-dur">0ms</span>
+            </div>
+            <div class="test-row pass">
+              <span class="test-icon">&#10003;</span>
+              <span class="test-name">test_10_consecutive_requests_stay_fast</span>
+              <span class="test-dur">0ms</span>
+            </div></div></div>
+  <div class="footer">SmartTestKit &mdash; Automated API Testing Framework &nbsp;|&nbsp; 2026</div>
+</div>
+</body>
+</html>

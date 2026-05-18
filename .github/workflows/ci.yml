@@ -1,0 +1,70 @@
+name: SmartTestKit CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run ALL tests with coverage + JSON report
+        run: |
+          mkdir -p reports
+          pytest tests/ \
+            --cov=app \
+            --cov-report=term-missing \
+            --cov-report=html:reports/coverage \
+            --cov-fail-under=80 \
+            --json-report \
+            --json-report-file=reports/results.json \
+            -v
+
+      - name: Generate HTML dashboard report
+        if: always()
+        run: python scripts/generate_report.py reports/results.json
+
+      - name: Record history entry
+        if: always()
+        run: python scripts/track_history.py reports/results.json
+
+      - name: AI explain failures (if any)
+        if: failure()
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/ai_explain_failures.py reports/results.json
+
+      - name: Send Slack notification
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: python notifications/notify.py reports/results.json
+
+      - name: Upload HTML report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smarttestkit-report-py${{ matrix.python-version }}
+          path: |
+            reports/report.html
+            reports/coverage/
+            reports/history.html
+          retention-days: 30

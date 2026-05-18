@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-05-18T15:43:31",
+    "api_url": "http://localhost:5000",
+    "suite": "tests/external",
+    "total": 21,
+    "passed": 20,
+    "failed": 0,
+    "run_id": "3019b22f"
+  },
+  {
+    "timestamp": "2026-05-18T15:45:55",
+    "api_url": "https://reqres.in",
+    "suite": "tests/external",
+    "total": 21,
+    "passed": 13,
+    "failed": 7,
+    "run_id": "78c06fb2"
+  },
+  {
+    "timestamp": "2026-05-18T15:48:27",
+    "api_url": "http://localhost:5000",
+    "suite": "tests",
+    "total": 100,
+    "passed": 99,
+    "failed": 0,
+    "run_id": "82f8e016"
+  }
+]
