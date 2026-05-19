@@ -29,9 +29,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Start FastAPI server
+      - name: Start Flask server
         run: |
-          nohup uvicorn app.main:app --host 0.0.0.0 --port 5000 > server.log 2>&1 &
+          nohup python app/main.py > server.log 2>&1 &
           sleep 10
 
       - name: Verify server is running
